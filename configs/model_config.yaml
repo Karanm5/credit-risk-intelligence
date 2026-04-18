@@ -1,0 +1,170 @@
+# Credit Risk Intelligence Platform
+# Model Configuration
+
+# =============================================================================
+# Data Configuration
+# =============================================================================
+data:
+  train_start_date: "2023-01-01"
+  train_end_date: "2024-01-31"
+  validation_start_date: "2024-02-01"
+  validation_end_date: "2024-02-29"
+  test_start_date: "2024-03-01"
+  test_end_date: "2024-03-31"
+  
+  label_column: "is_default"
+  customer_id_column: "customer_id"
+  timestamp_column: "event_date"
+
+# =============================================================================
+# Feature Configuration
+# =============================================================================
+features:
+  # Temporal feature windows
+  velocity_windows: ["1h", "6h", "24h", "7d", "30d"]
+  
+  # Feature groups to include
+  include_groups:
+    - temporal
+    - amount
+    - velocity
+    - volatility
+    - diversity
+    - pattern
+    - graph
+    - risk_propagation
+  
+  # Features to exclude (if any)
+  exclude_features: []
+  
+  # Missing value handling
+  missing_strategy: "median"  # Options: mean, median, zero, drop
+
+# =============================================================================
+# Model Configuration
+# =============================================================================
+model:
+  # General settings
+  test_size: 0.2
+  random_state: 42
+  cv_folds: 5
+  
+  # XGBoost hyperparameters
+  xgboost:
+    n_estimators: 500
+    max_depth: 6
+    learning_rate: 0.05
+    subsample: 0.8
+    colsample_bytree: 0.8
+    min_child_weight: 1
+    gamma: 0
+    reg_alpha: 0.1
+    reg_lambda: 1.0
+    scale_pos_weight: 1  # Adjust for class imbalance
+    
+  # LightGBM hyperparameters
+  lightgbm:
+    n_estimators: 500
+    max_depth: 8
+    learning_rate: 0.05
+    num_leaves: 31
+    subsample: 0.8
+    colsample_bytree: 0.8
+    min_child_samples: 20
+    reg_alpha: 0.1
+    reg_lambda: 1.0
+    
+  # Neural Network hyperparameters
+  neural_network:
+    hidden_layers: [128, 64, 32]
+    dropout: 0.3
+    learning_rate: 0.001
+    weight_decay: 0.00001
+    epochs: 100
+    batch_size: 256
+    early_stopping_patience: 10
+    
+  # Meta-learner
+  meta_learner:
+    type: "logistic_regression"
+    calibration_method: "isotonic"
+    cv_folds: 5
+
+# =============================================================================
+# Evaluation Configuration
+# =============================================================================
+evaluation:
+  # Primary metric for model selection
+  primary_metric: "auc_roc"
+  
+  # Metrics to compute
+  metrics:
+    - auc_roc
+    - auc_pr
+    - ks_statistic
+    - gini_coefficient
+    - precision_at_10
+    - recall_at_10
+    - f1_score
+    
+  # Performance thresholds (fail if below)
+  thresholds:
+    auc_roc: 0.75
+    ks_statistic: 0.40
+    gini_coefficient: 0.50
+
+# =============================================================================
+# Serving Configuration
+# =============================================================================
+serving:
+  # Prediction threshold
+  default_threshold: 0.5
+  
+  # Risk level boundaries
+  risk_levels:
+    low: [0.0, 0.3]
+    medium: [0.3, 0.7]
+    high: [0.7, 1.0]
+  
+  # API settings
+  max_batch_size: 1000
+  timeout_seconds: 30
+  
+  # Explanation settings
+  shap_top_k: 5
+  include_explanations: true
+
+# =============================================================================
+# MLflow Configuration
+# =============================================================================
+mlflow:
+  experiment_name: "credit-risk-model"
+  model_name: "credit-risk-ensemble"
+  
+  # What to log
+  log_artifacts: true
+  log_feature_importance: true
+  log_shap_summary: true
+  log_confusion_matrix: true
+  log_calibration_curve: true
+
+# =============================================================================
+# Monitoring Configuration
+# =============================================================================
+monitoring:
+  # Drift detection
+  drift:
+    method: "psi"  # Options: psi, ks, chi2
+    threshold: 0.2
+    check_frequency: "daily"
+    
+  # Performance monitoring
+  performance:
+    check_frequency: "daily"
+    alert_threshold_auc: 0.70
+    alert_threshold_ks: 0.35
+    
+  # Feature monitoring
+  features:
+    monitor_all: true
+    alert_on_drift: true
