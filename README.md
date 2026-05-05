@@ -18,7 +18,7 @@ Traditional credit scoring relies on limited historical data (payment history, c
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
@@ -57,7 +57,7 @@ Traditional credit scoring relies on limited historical data (payment history, c
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology | Purpose |
 |-------|------------|---------|
@@ -76,7 +76,7 @@ Traditional credit scoring relies on limited historical data (payment history, c
 
 ---
 
-## 📊 Data Architecture
+## Data Architecture
 
 ### Medallion Architecture (Delta Lake)
 
@@ -105,7 +105,7 @@ Traditional credit scoring relies on limited historical data (payment history, c
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -156,7 +156,7 @@ curl -X POST http://localhost:8000/predict \
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 credit-risk-intelligence/
@@ -236,7 +236,7 @@ credit-risk-intelligence/
 
 ---
 
-## 🔬 Feature Engineering Deep Dive
+## Feature Engineering Deep Dive
 
 ### Temporal Features
 
@@ -288,7 +288,7 @@ def compute_graph_features(transactions_df: pd.DataFrame) -> pd.DataFrame:
 
 ---
 
-## 🤖 Model Architecture
+## Model Architecture
 
 ### Ensemble Strategy
 
@@ -332,7 +332,7 @@ The platform uses a **stacked ensemble** combining three base models:
 
 ---
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 ### Continuous Integration
 
@@ -374,7 +374,7 @@ jobs:
 
 ---
 
-## 📈 Monitoring & Observability
+## Monitoring & Observability
 
 ### Model Drift Detection
 
@@ -408,17 +408,15 @@ def monitor_drift(reference_data: pd.DataFrame, current_data: pd.DataFrame):
 
 ---
 
-## 🔐 Security & Compliance
+## Security & Compliance 
 
-- **Data encryption**: At-rest (AES-256) and in-transit (TLS 1.3)
-- **PII handling**: Tokenisation of sensitive fields
 - **Audit logging**: All predictions logged with explanations
 - **Model cards**: Documented bias analysis and limitations
 - **GDPR compliance**: Right to explanation via SHAP
 
 ---
 
-## 🧪 Testing Strategy
+## Testing Strategy
 
 ```bash
 # Run all tests
@@ -446,7 +444,7 @@ pytest --cov=src --cov-report=html
 
 ---
 
-## 📚 Further Reading
+## Further Reading
 
 - [Delta Lake Documentation](https://docs.delta.io/)
 - [Snowflake Feature Store Pattern](https://docs.snowflake.com/)
@@ -456,7 +454,7 @@ pytest --cov=src --cov-report=html
 
 ---
 
-## 👤 Author
+## Author
 
 **Karan**
 - MSc Data Analytics (Distinction), Aston University
@@ -466,13 +464,13 @@ pytest --cov=src --cov-report=html
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
