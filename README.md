@@ -1,4 +1,4 @@
-# 🏦 Credit Risk Intelligence Platform
+# Credit Risk Intelligence Platform
 
 [![CI/CD Pipeline](https://github.com/Karanm5/credit-risk-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/Karanm5/credit-risk-intelligence/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -7,7 +7,7 @@
 
 > **A production-grade, real-time credit risk assessment platform using alternative data signals, graph-based features, and modern MLOps practices.**
 
-## 🎯 What Makes This Project Unique
+## What Makes This Project Unique
 
 Traditional credit scoring relies on limited historical data (payment history, credit utilisation). This platform takes a **fundamentally different approach**:
 
@@ -442,6 +442,8 @@ pytest --cov=src --cov-report=html
 | `src/serving/` | 90% |
 | `src/data/` | 80% |
 
+* Note: Reason for the use of ensemble model will be uploaded soon.
+
 ---
 
 ## 📚 Further Reading
@@ -460,6 +462,7 @@ pytest --cov=src --cov-report=html
 - MSc Data Analytics (Distinction), Aston University
 - [LinkedIn](https://linkedin.com/in/karan-th)
 - [GitHub](https://github.com/Karanm5)
+
 
 ---
 
