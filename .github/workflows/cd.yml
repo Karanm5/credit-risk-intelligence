@@ -69,7 +69,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      -     - name: Deploy to staging
+      - name: Deploy to staging
       run: |
         echo "Deploying to staging environment..."
         # kubectl set image deployment/credit-risk-api \
