@@ -321,16 +321,7 @@ The platform uses a **stacked ensemble** combining three base models:
                     └──────────────────┘
 ```
 
-### Model Performance
 
-| Metric | Value | Industry Benchmark |
-|--------|-------|-------------------|
-| **AUC-ROC** | 0.91 | 0.75-0.85 |
-| **KS Statistic** | 0.68 | 0.40-0.55 |
-| **Gini Coefficient** | 0.82 | 0.50-0.70 |
-| **Precision @10%** | 0.73 | 0.55-0.65 |
-
----
 
 ## CI/CD Pipeline
 
