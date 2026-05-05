@@ -69,13 +69,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Deploy to staging
-        run: |
-          echo "Deploying to staging environment..."
-          # kubectl set image deployment/credit-risk-api \
-          #   api=${{ needs.build-and-push.outputs.image_tag }} \
-          #   --namespace=staging
-          echo "Deployment to staging complete"
+      -     - name: Deploy to staging
+      run: |
+        echo "Deploying to staging environment..."
+        # kubectl set image deployment/credit-risk-api \
+        # api=IMAGE_TAG \
+        # --namespace=staging
+        echo "Deployment to staging complete"
+
       
       - name: Run smoke tests
         run: |
