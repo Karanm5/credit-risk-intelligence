@@ -16,6 +16,7 @@ Traditional credit scoring relies on limited historical data (payment history, c
 3. **Real-Time Scoring**: Sub-100ms inference with streaming feature computation
 4. **Explainable AI**: Every prediction comes with SHAP-based explanations for regulatory compliance
 
+Note: The CI/CD pipeline issue will be rectify soon. The project will be live soon. Sorry for the inconvenience!!!
 ---
 
 ##  Architecture
