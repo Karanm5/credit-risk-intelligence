@@ -324,7 +324,7 @@ The platform uses a **stacked ensemble** combining three base models:
 
 
 
-## CI/CD Pipeline
+## CI/CD Pipeline( not active yet- Have error)
 
 ### Continuous Integration
 
