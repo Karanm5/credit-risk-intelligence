@@ -1,0 +1,34 @@
+# Runtime dependencies for the model-serving Docker image only.
+# Training-time dependencies (torch, pyspark, airflow, mlflow, delta-spark)
+# are intentionally excluded to keep the image small and the attack surface
+# minimal. Training runs in a separate environment (see requirements.txt).
+
+pandas>=2.0.0,<3.0.0
+numpy>=1.24.0,<3.0.0
+scipy>=1.11.0
+scikit-learn>=1.3.0,<2.0.0
+xgboost>=2.0.0,<4.0.0
+lightgbm>=4.0.0,<5.0.0
+networkx>=3.2.0
+joblib>=1.3.0
+
+# Explainability
+shap>=0.44.0
+
+# API
+fastapi>=0.109.0
+uvicorn[standard]>=0.25.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+httpx>=0.26.0
+
+# Feature store
+snowflake-connector-python[pandas]>=3.5.0
+
+# Observability
+prometheus-client>=0.19.0
+structlog>=24.1.0
+
+# Utilities
+python-dotenv>=1.0.0
+pyyaml>=6.0.0

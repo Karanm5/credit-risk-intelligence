@@ -14,9 +14,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt
+# Install serving dependencies only (training deps like torch/pyspark/airflow
+# are excluded to keep the image small - see requirements-serving.txt)
+COPY requirements-serving.txt .
+RUN pip install --no-cache-dir --user -r requirements-serving.txt
 
 # ============================================
 # Stage 2: Production

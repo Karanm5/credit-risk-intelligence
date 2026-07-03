@@ -1,0 +1,31 @@
+# Minimal dependencies for CI unit tests.
+# Heavy runtime dependencies (torch, pyspark, airflow, snowflake, kafka) are
+# deliberately excluded: unit tests mock those integrations. See
+# requirements.txt for the full local/production set and
+# requirements-serving.txt for the Docker image.
+
+pandas>=2.0.0,<3.0.0
+numpy>=1.24.0,<3.0.0
+scipy>=1.11.0
+scikit-learn>=1.3.0,<2.0.0
+xgboost>=2.0.0,<4.0.0
+lightgbm>=4.0.0,<5.0.0
+shap>=0.44.0
+networkx>=3.2.0
+joblib>=1.3.0
+
+# Config
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+python-dotenv>=1.0.0
+pyyaml>=6.0.0
+
+# API layer (imported by src/serving)
+fastapi>=0.109.0
+httpx>=0.26.0
+prometheus-client>=0.19.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-asyncio>=0.23.0
