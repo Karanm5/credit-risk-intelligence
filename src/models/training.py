@@ -101,12 +101,12 @@ class CreditRiskEnsemble:
 
         # Out-of-fold predictions to train the meta-learner without leakage
         logger.info("Generating out-of-fold predictions for meta-learner")
-        xgb_oof = cross_val_predict(
-            self.xgb_model, X, y, cv=5, method="predict_proba"
-        )[:, 1]
-        lgb_oof = cross_val_predict(
-            self.lgb_model, X, y, cv=5, method="predict_proba"
-        )[:, 1]
+        xgb_oof = cross_val_predict(self.xgb_model, X, y, cv=5, method="predict_proba")[
+            :, 1
+        ]
+        lgb_oof = cross_val_predict(self.lgb_model, X, y, cv=5, method="predict_proba")[
+            :, 1
+        ]
 
         meta_features = np.column_stack([xgb_oof, lgb_oof])
         self.meta_model = LogisticRegression(**self.params.get("meta", {}))
@@ -168,7 +168,9 @@ class CreditRiskEnsemble:
             precision_at_10=precision_at_10,
         )
 
-    def save(self, version: str = "latest", model_dir: Path = DEFAULT_MODEL_DIR) -> Path:
+    def save(
+        self, version: str = "latest", model_dir: Path = DEFAULT_MODEL_DIR
+    ) -> Path:
         """Persist the ensemble to disk with joblib."""
         self._check_fitted()
         model_dir.mkdir(parents=True, exist_ok=True)
@@ -185,7 +187,9 @@ class CreditRiskEnsemble:
         logger.info("Model saved to %s", path)
         return path
 
-    def load(self, version: str = "latest", model_dir: Path = DEFAULT_MODEL_DIR) -> None:
+    def load(
+        self, version: str = "latest", model_dir: Path = DEFAULT_MODEL_DIR
+    ) -> None:
         """
         Load a persisted ensemble from disk.
 
